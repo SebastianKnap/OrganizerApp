@@ -44,9 +44,9 @@ def add_expense():
 def dashboard():
     summary = db.session.query(
         Category.name.label('category'),
-        func.MONTH(Expense.date).label('month'),
-        func.YEAR(Expense.date).label('year'),
+        func.strftime('%m', Expense.date).label('month'),
+        func.strftime('%Y', Expense.date).label('year'),
         func.sum(Expense.amount).label('total')
     ).join(Expense).filter(Expense.user_id == current_user.id)\
-     .group_by(Category.name, func.MONTH(Expense.date), func.YEAR(Expense.date)).all()
+     .group_by(Category.name, func.strftime('%m', Expense.date), func.strftime('%Y', Expense.date)).all()
     return render_template('dashboard.html', summaries=summary)

@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # Konfiguracja aplikacji
 app.config['SECRET_KEY'] = 'your_secret_key_here'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc://DESKTOP-VG7207B\\SQLEXPRESS/ArchitekturaPython?driver=ODBC+Driver+17+for+SQL+Server&Trusted_Connection=yes"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///architektura.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Inicjalizacja rozszerzeń
